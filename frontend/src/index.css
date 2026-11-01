@@ -1,0 +1,256 @@
+/* Apple-grade Design System & SF-Pro Aesthetics */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Apple Light & Dark Canvas */
+  --bg-app: #08090c;
+  --bg-sidebar: rgba(13, 15, 20, 0.75);
+  --bg-card: rgba(22, 25, 34, 0.65);
+  --bg-card-hover: rgba(30, 35, 48, 0.75);
+  --bg-input: rgba(15, 18, 26, 0.85);
+
+  /* Glassmorphism & Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(0, 113, 227, 0.6);
+  --glass-blur: blur(24px) saturate(190%);
+  --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+  --shadow-float: 0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.1);
+
+  /* Apple Accent Colors */
+  --apple-blue: #0071e3;
+  --apple-blue-hover: #0077ed;
+  --apple-blue-glow: rgba(0, 113, 227, 0.25);
+  --apple-purple: #a855f7;
+  --apple-green: #30d158;
+  --apple-green-glow: rgba(48, 209, 88, 0.2);
+  --apple-orange: #ff9f0a;
+  --apple-red: #ff453a;
+  --apple-teal: #64d2ff;
+
+  /* Typography */
+  --text-primary: #f5f5f7;
+  --text-secondary: #86868b;
+  --text-muted: #56565f;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --spring: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+  selection-background-color: var(--apple-blue);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Glass panel */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  transition: var(--spring);
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Apple Buttons */
+.btn-apple {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--spring);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #0077ed 0%, #0062c4 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 113, 227, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(10px);
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-success {
+  background: linear-gradient(180deg, #34c759 0%, #28a745 100%);
+  color: white;
+  box-shadow: 0 4px 14px var(--apple-green-glow);
+}
+
+/* Form Inputs */
+.apple-input {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-family: inherit;
+  width: 100%;
+  transition: var(--spring);
+  outline: none;
+}
+.apple-input:focus {
+  border-color: var(--apple-blue);
+  box-shadow: 0 0 0 3px var(--apple-blue-glow);
+  background: rgba(18, 22, 32, 0.95);
+}
+
+.apple-select {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.badge-paid, .badge-active, .badge-good {
+  background: rgba(48, 209, 88, 0.14);
+  color: #30d158;
+  border: 1px solid rgba(48, 209, 88, 0.3);
+}
+
+.badge-pending, .badge-warning {
+  background: rgba(255, 159, 10, 0.14);
+  color: #ff9f0a;
+  border: 1px solid rgba(255, 159, 10, 0.3);
+}
+
+.badge-overdue, .badge-danger {
+  background: rgba(255, 69, 58, 0.14);
+  color: #ff453a;
+  border: 1px solid rgba(255, 69, 58, 0.3);
+}
+
+.badge-blue {
+  background: rgba(0, 113, 227, 0.15);
+  color: #64d2ff;
+  border: 1px solid rgba(0, 113, 227, 0.3);
+}
+
+/* Metric typography */
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  background: linear-gradient(180deg, #ffffff 30%, #a1a1a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(0, 113, 227, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 113, 227, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 113, 227, 0); }
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s infinite;
+}
+
+/* Print Invoice styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .printable-invoice {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    color: #111 !important;
+    background: #fff !important;
+  }
+}
